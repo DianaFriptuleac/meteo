@@ -57,14 +57,14 @@ const Home = () => {
       <h2>Aggiornamenti in tempo reale sul meteo!</h2>
 
       {/* Barra di ricerca */}
-      <div className="mt-4 d-flex justify-content-center">
+      <div className="mt-4 d-flex input-div">
         <form
           onSubmit={handleSubmit}
-          className="w-50 d-flex align-items-center"
+          className="d-flex align-items-center"
         >
           <InputGroup className="m-3">
             <Form.Control
-            className="w-100"
+            className="w-100 px-5"
               aria-label="Città"
               type="text"
               value={searchQuery}

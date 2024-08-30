@@ -81,3 +81,16 @@ background-repeat: repeat;
 .carousel-opacity {
   opacity: 0.8;
 }
+@media (min-width: 768px) {
+  .input-div {
+    justify-content: center;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .input-div {
+    justify-content: flex-start;
+
+  }
+}
