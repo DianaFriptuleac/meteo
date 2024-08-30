@@ -16,7 +16,7 @@ function App() {
   <main>
    <Routes>
     <Route path='/' element={<Home/>}/>
-    <Route path='weather' element={<WeatherSection/>}/>
+    <Route path='/meteo' element={<WeatherSection/>}/>
     <Route path="*" element={<NotFound/>} />
     </Routes>
   </main>
