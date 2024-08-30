@@ -78,3 +78,6 @@ background-repeat: repeat;
 .cityCard:hover {
   transform: scale(1.05); /* Ingrandisco la card al passaggio del mouse */
 }
+.carousel-opacity {
+  opacity: 0.8;
+}

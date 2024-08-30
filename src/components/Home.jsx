@@ -96,7 +96,7 @@ const Home = () => {
       {/* Mostro il carosello solo se non c'e una citta cercata */}
       {!cityWeather && (
         <Container>
-          <Carousel data-bs-theme="dark" className="mb-3">
+          <Carousel data-bs-theme="dark" className="mb-3 carousel-opacity">
             <Carousel.Item>
               <img
                 className="d-block w-100"
