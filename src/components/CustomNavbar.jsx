@@ -34,8 +34,6 @@ const CustomNavbar = function () {
             </Link>
           </Nav>
           <Nav className="ms-auto">
-          <Link to="/search" className={addActiveOrNot('searcht')}>
-           <i className="bi bi-search"></i> </Link>
             <Link to="/settings" className={addActiveOrNot('settings')}><i className="bi bi-bell-fill"></i></Link>
             <Link to="/profile" className={addActiveOrNot('profile')}><i className="bi bi-person-circle icons"></i></Link>
           </Nav>

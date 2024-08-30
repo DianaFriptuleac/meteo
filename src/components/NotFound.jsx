@@ -5,7 +5,7 @@ const NotFound = () => {
   const navigate = useNavigate();  //un hook che ci riporta alla pagina
   return (
     <Container>
-      <Row className="justify-content-center my-5" >
+      <Row className="justify-content-center my-5 text-light" >
         <Col xs={12} md={6}>
           <h2>404 - Not found</h2>
           <p>

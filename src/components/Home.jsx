@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import SingleCity from "./SingleCity";
 import { Button, Form, InputGroup } from "react-bootstrap";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Carousel } from "react-bootstrap";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchedCity, setSearchedCity] = useState(""); // Stato per la città cercata
-  const [cityWeather, setCityWeather] = useState(null); // Stato per i dati meteo della città cercata
+  const [searchedCity, setSearchedCity] = useState(""); 
+  const [cityWeather, setCityWeather] = useState(null); 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   
-
   useEffect(() => {
     if (searchedCity) {
       setIsLoading(true);
@@ -46,6 +45,7 @@ const Home = () => {
     setSearchedCity(searchQuery.trim());
     setSearchQuery("");
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSearch();
@@ -53,15 +53,12 @@ const Home = () => {
 
   return (
     <div className="text-center mt-4 text-light">
-      <h1>Benvenuti in My meteo!</h1>
+      <h1>My meteo</h1>
       <h2>Aggiornamenti in tempo reale sul meteo!</h2>
 
       {/* Barra di ricerca */}
       <div className="mt-4 d-flex justify-content-center">
-        <form
-          onSubmit={handleSubmit}
-          className="w-50  d-flex align-items-center "
-        >
+        <form onSubmit={handleSubmit} className="w-50 d-flex align-items-center">
           <InputGroup className="m-3">
             <Form.Control
               aria-label="Città"
@@ -71,7 +68,6 @@ const Home = () => {
               placeholder="Cerca una città..."
             />
           </InputGroup>
-
           <Button type="submit" className="btn btn-primary px-3 h-50">
             Cerca
           </Button>
@@ -80,9 +76,8 @@ const Home = () => {
 
       {/* Mostro i dati della citta cercata o un messaggio di errore */}
       {isLoading && <p>Caricamento in corso...</p>}
-      {isError && (
-        <p>Ci dispiace, non abbiamo informazioni per la tua città.</p>
-      )}
+      {isError && <p>Ci dispiace, non abbiamo informazioni per la tua città.</p>}
+
       {cityWeather && !isLoading && !isError && (
         <Container className="my-3">
           <Row className="justify-content-center">
@@ -92,11 +87,56 @@ const Home = () => {
           </Row>
         </Container>
       )}
-      {!cityWeather && !isLoading && !isError && searchedCity && (
-        <p>Ci dispiace, non abbiamo informazioni per la tua città.</p>
+
+      {/* Mostro il carosello solo se non c'e una citta cercata */}
+      {!cityWeather && (
+        <Container>
+          <Carousel data-bs-theme="dark" className="mb-3">
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src="https://www.meteoweb.eu/wp-content/uploads/2017/09/mappa-sentinel-2.jpg"
+                alt="First slide"
+              />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src="https://www.ideativi.it/public/Blog/google_maps_world_weather.png"
+                alt="Second slide"
+              />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src="https://ilbolive.unipd.it/sites/default/files/2022-05/n_meteo.jpg"
+                alt="Third slide"
+              />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src="https://cdn.studenti.stbm.it/images/2020/09/29/pianeta-terra-orig.jpeg"
+                alt="Pianeta"
+              />
+            </Carousel.Item>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src="https://cartadellaterra.it/wp-content/uploads/2023/09/homepage1-1.jpg"
+                alt="Terra"
+              />
+            </Carousel.Item>
+          </Carousel>
+        </Container>
       )}
+
+     
+       
+    
     </div>
   );
 };
 
 export default Home;
+
