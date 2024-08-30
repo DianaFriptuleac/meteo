@@ -1,10 +1,24 @@
-import { Card } from "react-bootstrap"
+import React from "react";
+import { Card } from "react-bootstrap";
+import cityImages from "../assets/cityImages.json"; // Importa il JSON con le immagini delle città
 
-const SingleCity = ({meteo}) => {
-    return(
-        <Card className="h-100">
+const SingleCity = ({ meteo }) => {
+  // Estrai il nome della città
+  const cityName = meteo.name;
+
+  // Recupera il percorso dell'immagine corrispondente
+  const cityImage = cityImages[cityName] || "./assets/default.jpg"; // Usa un'immagine di default se non c'è corrispondenza
+
+  return (
+    <Card className="h-100 cityCard">
+      <Card.Img
+        variant="top"
+        src={cityImage}
+        alt={cityName}
+        style={{ width: "100%", height: "200px", objectFit: "cover" }} // Adatta l'immagine alla card
+      />
       <Card.Body>
-        <Card.Title>{meteo.name}</Card.Title>
+        <Card.Title>{cityName}</Card.Title>
         <Card.Text>
           <strong>Temperature:</strong> {(meteo.main.temp - 273.15).toFixed(1)}°C
         </Card.Text>
@@ -20,3 +34,4 @@ const SingleCity = ({meteo}) => {
 };
 
 export default SingleCity;
+
