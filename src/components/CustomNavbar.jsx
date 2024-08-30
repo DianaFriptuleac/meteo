@@ -30,7 +30,7 @@ const CustomNavbar = function () {
               Mondo
             </Link>
             <Link to="/notiizie" className={addActiveOrNot('notizie')}>
-             Nootizie
+             Notizie
             </Link>
           </Nav>
           <Nav className="ms-auto">

@@ -6,6 +6,7 @@ import CustomNavbar from './components/CustomNavbar';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from './components/NotFound';
 import Home from './components/Home.jsx'
+import WeatherSection from './components/WeatherSection.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
   <main>
    <Routes>
     <Route path='/' element={<Home/>}/>
+    <Route path='weather' element={<WeatherSection/>}/>
     <Route path="*" element={<NotFound/>} />
     </Routes>
   </main>
