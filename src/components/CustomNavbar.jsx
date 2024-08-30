@@ -23,8 +23,8 @@ const CustomNavbar = function () {
           <Link to="/" className={addActiveOrNot('home')}>
              Home
             </Link>
-            <Link to="/regioni" className={addActiveOrNot('regioni')}>
-              Regioni
+            <Link to="/meteo" className={addActiveOrNot('regioni')}>
+              Tutte le Regioni
             </Link>
             <Link to="/mondo" className={addActiveOrNot('mondo')}>
               Mondo

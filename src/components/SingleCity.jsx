@@ -1,13 +1,22 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Alert } from "react-bootstrap";
 import cityImages from "../assets/cityImages.json"; // Importa il JSON con le immagini delle città
 
 const SingleCity = ({ meteo }) => {
-  // Estrai il nome della città
+  // Verifica se ci sono dati meteo disponibili
+  if (!meteo || !meteo.name || !meteo.main || !meteo.weather) {
+    return (
+      <Alert variant="danger">
+        Ci dispiace, non abbiamo informazioni per la tua città.
+      </Alert>
+    );
+  }
+
+  // Estraggo il nome della città
   const cityName = meteo.name;
 
-  // Recupera il percorso dell'immagine corrispondente
-  const cityImage = cityImages[cityName] || "./assets/default.jpg"; // Usa un'immagine di default se non c'è corrispondenza
+  // Recupero il percorso dell'immagine corrispondente
+  const cityImage = cityImages[cityName] || "https://meteobook.it/wp-content/uploads/2016/10/mondo.gif"
 
   return (
     <Card className="h-100 cityCard">
@@ -15,7 +24,7 @@ const SingleCity = ({ meteo }) => {
         variant="top"
         src={cityImage}
         alt={cityName}
-        style={{ width: "100%", height: "200px", objectFit: "cover" }} // Adatta l'immagine alla card
+       
       />
       <Card.Body>
         <Card.Title>{cityName}</Card.Title>
@@ -34,4 +43,7 @@ const SingleCity = ({ meteo }) => {
 };
 
 export default SingleCity;
+
+
+
 

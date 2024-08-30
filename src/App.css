@@ -36,6 +36,11 @@
     transform: rotate(360deg);
   }
 }
-.myNavbar{
-background-color: rgb(5, 5, 124);
+.myNavbar {
+  background-color: rgb(5, 5, 124);
+}
+body {
+  background-image: url("../public/assets/nuvole.jpg");
+  background-size: cover;
+background-repeat: repeat;
 }
