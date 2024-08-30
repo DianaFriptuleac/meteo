@@ -64,6 +64,7 @@ const Home = () => {
         >
           <InputGroup className="m-3">
             <Form.Control
+            className="w-100"
               aria-label="Città"
               type="text"
               value={searchQuery}
