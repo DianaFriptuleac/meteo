@@ -26,7 +26,7 @@ const CustomNavbar = function () {
             <Link to="/meteo" className={addActiveOrNot('regioni')}>
               Tutte le Regioni
             </Link>
-            <Link to="/mondo" className={addActiveOrNot('mondo')}>
+            <Link to="/daaggiornare" className={addActiveOrNot('mondo')}>
               Mondo
             </Link>
             <Link to="/notizie" className={addActiveOrNot('notizie')}>
@@ -34,8 +34,8 @@ const CustomNavbar = function () {
             </Link>
           </Nav>
           <Nav className="ms-auto">
-            <Link to="/settings" className={addActiveOrNot('settings')}><i className="bi bi-bell-fill"></i></Link>
-            <Link to="/profile" className={addActiveOrNot('profile')}><i className="bi bi-person-circle icons"></i></Link>
+            <Link to="/daaggiornare" className={addActiveOrNot('settings')}><i className="bi bi-bell-fill"></i></Link>
+            <Link to="/daaggiornare" className={addActiveOrNot('profile')}><i className="bi bi-person-circle icons"></i></Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

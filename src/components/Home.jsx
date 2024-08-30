@@ -5,11 +5,11 @@ import { Row, Col, Container, Carousel } from "react-bootstrap";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchedCity, setSearchedCity] = useState(""); 
-  const [cityWeather, setCityWeather] = useState(null); 
+  const [searchedCity, setSearchedCity] = useState("");
+  const [cityWeather, setCityWeather] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  
+
   useEffect(() => {
     if (searchedCity) {
       setIsLoading(true);
@@ -58,7 +58,10 @@ const Home = () => {
 
       {/* Barra di ricerca */}
       <div className="mt-4 d-flex justify-content-center">
-        <form onSubmit={handleSubmit} className="w-50 d-flex align-items-center">
+        <form
+          onSubmit={handleSubmit}
+          className="w-50 d-flex align-items-center"
+        >
           <InputGroup className="m-3">
             <Form.Control
               aria-label="Città"
@@ -76,7 +79,9 @@ const Home = () => {
 
       {/* Mostro i dati della citta cercata o un messaggio di errore */}
       {isLoading && <p>Caricamento in corso...</p>}
-      {isError && <p>Ci dispiace, non abbiamo informazioni per la tua città.</p>}
+      {isError && (
+        <p>Ci dispiace, non abbiamo informazioni per la tua città.</p>
+      )}
 
       {cityWeather && !isLoading && !isError && (
         <Container className="my-3">
@@ -130,13 +135,8 @@ const Home = () => {
           </Carousel>
         </Container>
       )}
-
-     
-       
-    
     </div>
   );
 };
 
 export default Home;
-
