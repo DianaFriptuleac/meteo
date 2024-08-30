@@ -29,7 +29,7 @@ const CustomNavbar = function () {
             <Link to="/mondo" className={addActiveOrNot('mondo')}>
               Mondo
             </Link>
-            <Link to="/notiizie" className={addActiveOrNot('notizie')}>
+            <Link to="/notizie" className={addActiveOrNot('notizie')}>
              Notizie
             </Link>
           </Nav>

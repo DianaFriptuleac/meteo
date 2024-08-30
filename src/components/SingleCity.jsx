@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, Alert } from "react-bootstrap";
 import cityImages from "../assets/cityImages.json"; // Importa il JSON con le immagini delle città
 
+
 const SingleCity = ({ meteo }) => {
   // Stato per gestire la visibilita del testo
   const [isTextVisible, setIsTextVisible] = useState(false);

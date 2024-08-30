@@ -8,6 +8,7 @@ import NotFound from './components/NotFound';
 import Home from './components/Home.jsx'
 import WeatherSection from './components/WeatherSection.jsx';
 import MyFooter from './components/MyFooter.jsx';
+import Notizie from './components/Notizie.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -18,7 +19,8 @@ function App() {
    <Routes>
     <Route path='/' element={<Home/>}/>
     <Route path='/meteo' element={<WeatherSection/>}/>
-    <Route path="*" element={<NotFound/>} />
+    <Route path="/notizie" element={<Notizie />} />
+  <Route path="*" element={<NotFound/>} />
     </Routes>
   </main>
   <MyFooter/>
