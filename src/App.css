@@ -44,3 +44,19 @@ body {
   background-size: cover;
 background-repeat: repeat;
 }
+.cards-image{
+  height: 100%;
+  object-fit: cover;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh ;
+ 
+}
+#root main {
+  flex-grow: 1;
+}
+.myFooter{
+  background-color: rgb(3, 3, 81);
+}

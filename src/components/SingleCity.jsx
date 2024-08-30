@@ -20,15 +20,16 @@ const SingleCity = ({ meteo }) => {
 
   return (
     <Card className="h-100 cityCard">
-      <Card.Img
+      <Card.Img className="cards-image"
         variant="top"
         src={cityImage}
         alt={cityName}
-       
+      
       />
       <Card.Body>
         <Card.Title>{cityName}</Card.Title>
         <Card.Text>
+            
           <strong>Temperature:</strong> {(meteo.main.temp - 273.15).toFixed(1)}°C
         </Card.Text>
         <Card.Text>

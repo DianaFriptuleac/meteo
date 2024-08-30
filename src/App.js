@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from './components/NotFound';
 import Home from './components/Home.jsx'
 import WeatherSection from './components/WeatherSection.jsx';
+import MyFooter from './components/MyFooter.jsx';
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
     <Route path="*" element={<NotFound/>} />
     </Routes>
   </main>
+  <MyFooter/>
   </BrowserRouter>
   );
 }
