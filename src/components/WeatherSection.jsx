@@ -59,7 +59,7 @@ const WeatherSection = () => {
             sm={6}
             md={4}
             lg={3} 
-            xl={2} className="mt-5" key={meteo.name}>
+            xl={2} className="my-3" key={meteo.name}>
             <SingleCity meteo={meteo} />
             </Col>
         ))}
