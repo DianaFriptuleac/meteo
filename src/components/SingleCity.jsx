@@ -43,11 +43,13 @@ const SingleCity = ({ meteo }) => {
       <Card.Body>
         <Card.Title className="titleCard">{cityName}</Card.Title>
         <Card.Text className="textCart">
-          <strong>Temperature:</strong> {(meteo.main.temp - 273.15).toFixed(1)}
+          {/*Converto la temperatura da Kelvin a Celsius (0 Kelvin = -273.15°C) */}
+          {/*.toFixed(1)- arrotondao la temp. a una cifra decimale*/}
+          <strong>Temperature:</strong> {(meteo.main.temp - 273.15).toFixed(1)} 
           °C
         </Card.Text>
         <Card.Text className="textCart">
-          <strong>Condition:</strong> {meteo.weather[0].description}
+          <strong>Condition:</strong> {meteo.weather[0].description} {/* primo elemento dell'array  */}
         </Card.Text>
         <Card.Text
           className={isTextVisible ? "card-text-visible" : "card-text-hidden"}

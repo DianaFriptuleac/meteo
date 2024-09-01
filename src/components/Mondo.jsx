@@ -94,8 +94,8 @@ const Mondo = () => {
         <h4>Trova il meteo della tua città</h4>
         </Row>
       <Row className="text-center g-3">
-        {isLoading && <p>Caricamento in corso...</p>}
-        {isError && <p>Ci dispiace, non abbiamo informazioni per le città.</p>}
+        {isLoading && <p className="text-light">Caricamento in corso...</p>}
+        {isError && <p className="text-light">Ci dispiace, non abbiamo informazioni per le città.</p>}
         {!isLoading &&
           !isError &&
           citiesWeather.length > 0 &&

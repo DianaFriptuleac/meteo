@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import SingleCity from "./SingleCity";
-import { Button, Form, InputGroup } from "react-bootstrap";
+import { Button, Form, InputGroup, Spinner } from "react-bootstrap";
 import { Row, Col, Container, Carousel } from "react-bootstrap";
 
 const Home = () => {
+  //il valore attuale del campo di input della ricerca
   const [searchQuery, setSearchQuery] = useState("");
+  //il nome della citta cercata
   const [searchedCity, setSearchedCity] = useState("");
+  //i dati meteo restituiti dall'API per la citta cercata
   const [cityWeather, setCityWeather] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  //useEffect - ogni volta che searchCity cambia
   useEffect(() => {
     if (searchedCity) {
       setIsLoading(true);
@@ -19,6 +23,7 @@ const Home = () => {
       )
         .then((response) => response.json())
         .then((data) => {
+          //se la risposta e valida (cod.200) aggiorna cityWeather con i dati ottenuti dalle API,altrimenti null
           if (data.cod === 200) {
             setCityWeather({
               name: data.name,
@@ -37,15 +42,20 @@ const Home = () => {
     }
   }, [searchedCity]);
 
+  //Aggiorno il searchQuery ogni volta che scrivo nel input
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
   };
-
+  //Imposto searchedCity con il valore di searchQuery
+  // ed elimino eventuali spazi vuoti trim()
+  // resetto searchQuery a una stringa vuota
   const handleSearch = () => {
     setSearchedCity(searchQuery.trim());
     setSearchQuery("");
   };
 
+  //prevengo il comportamento orenedinito del Form
+  //chiamo handleSearch() per fare la ricerca
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSearch();
@@ -64,7 +74,7 @@ const Home = () => {
         >
           <InputGroup className="m-3">
             <Form.Control
-            className="w-100 px-5"
+              className="w-100 px-5"
               aria-label="Città"
               type="text"
               value={searchQuery}
@@ -72,14 +82,28 @@ const Home = () => {
               placeholder="Cerca una città..."
             />
           </InputGroup>
-          <Button type="submit" className="btn btn-primary px-3 h-50 align-self-center submitButton">
+          <Button
+            type="submit"
+            className="btn btn-primary px-3 h-50 align-self-center submitButton"
+          >
             Cerca
           </Button>
         </form>
       </div>
 
       {/* Mostro i dati della citta cercata o un messaggio di errore */}
-      {isLoading && <p>Caricamento in corso...</p>}
+      {isLoading && (
+        <div className="d-flex justify-content-center align-items-center">
+          <Spinner
+            animation="border"
+            role="status"
+            variant="primary"
+            className="me-2"
+          >
+            <span className="visually-hidden">Caricamento in corso...</span>
+          </Spinner>
+        </div>
+      )}
       {isError && (
         <p>Ci dispiace, non abbiamo informazioni per la tua città.</p>
       )}
