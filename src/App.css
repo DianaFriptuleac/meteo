@@ -81,16 +81,22 @@ background-repeat: repeat;
 .carousel-opacity {
   opacity: 0.8;
 }
-@media (min-width: 768px) {
+@media (min-width: 480px) {
   .input-div {
     justify-content: center;
   }
+ 
 }
 
 
-@media (max-width: 767px) {
+@media (max-width: 480px) {
   .input-div {
     justify-content: flex-start;
 
   }
+ .submitButton{
+  padding: auto;
+  margin-right: 10px;
+  margin-left: 0px;
+ }
 }

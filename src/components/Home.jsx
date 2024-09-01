@@ -60,7 +60,7 @@ const Home = () => {
       <div className="mt-4 d-flex input-div">
         <form
           onSubmit={handleSubmit}
-          className="d-flex align-items-center"
+          className="d-flex align-items-center justify-content-center"
         >
           <InputGroup className="m-3">
             <Form.Control
@@ -72,7 +72,7 @@ const Home = () => {
               placeholder="Cerca una città..."
             />
           </InputGroup>
-          <Button type="submit" className="btn btn-primary px-3 h-50">
+          <Button type="submit" className="btn btn-primary px-3 h-50 align-self-center submitButton">
             Cerca
           </Button>
         </form>

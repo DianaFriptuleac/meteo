@@ -48,7 +48,8 @@ const WeatherSection = () => {
   };
 
   return (
-    <Container>
+    <Container className="mt-3">
+      <h2 className="text-light text-center my-2">Il meteo di tutte le città Italiane</h2>
     <Row className="text-center g-3">
        
       {isLoading && <p>Caricamento in corso...</p>}
