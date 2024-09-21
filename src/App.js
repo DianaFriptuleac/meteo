@@ -10,6 +10,7 @@ import MyFooter from "./components/MyFooter.jsx";
 import Notizie from "./components/Notizie.jsx";
 import DaAggiornare from "./components/DaAggirnare.jsx";
 import Mondo from "./components/Mondo.jsx";
+import News from "./components/News.jsx";
 function App() {
   return (
     <BrowserRouter>
@@ -20,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/meteo" element={<WeatherSection />} />
-          <Route path="/notizie" element={<Notizie />} />
+          <Route path="/notizie" element={<News />} />
           <Route path="/daaggiornare" element={<DaAggiornare />} />
           <Route path="/mondo" element={<Mondo />} />
           <Route path="*" element={<NotFound />} />

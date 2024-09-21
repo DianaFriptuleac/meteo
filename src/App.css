@@ -100,3 +100,29 @@ background-repeat: repeat;
   margin-left: 0px;
  }
 }
+.newsCard{
+  justify-content: space-between;
+  box-shadow: 0 4px 8px rgbs(0, 0, 0, 0.1);
+  overflow: hodden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;;
+}
+.newsCard :hover{
+
+  box-shadow:0 8px 16px rgba(0, 0, 0, 0.2); ;
+}
+.newsImage{
+height: 250px;
+object-fit: cover;
+}
+.newsImage:hover{
+transform: translateY(-5px);
+}
+
+.newsDescription{
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+.newsCard a{
+  text-decoration: none;
+}
