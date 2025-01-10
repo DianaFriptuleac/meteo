@@ -81,6 +81,17 @@ background-repeat: repeat;
 .carousel-opacity {
   opacity: 0.8;
 }
+
+/* Btn pages*/
+.pageButton{
+  background-color: rgb(3, 3, 81)!important;
+  transition: transform 0.3s ease;
+}
+.pageButton:hover{
+  transform: scale(1.1);
+
+}
+
 @media (min-width: 480px) {
   .input-div {
     justify-content: center;
@@ -110,9 +121,17 @@ background-repeat: repeat;
 
   box-shadow:0 8px 16px rgba(0, 0, 0, 0.2); ;
 }
+
+.newsCard .card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 200px;
+}
 .newsImage{
 height: 250px;
 object-fit: cover;
+width: 100%;
 }
 .newsImage:hover{
 transform: translateY(-5px);
