@@ -74,10 +74,10 @@ const News = () => {
     if(error){
       return (
         <Container>
-          <Row className="justify-content-center my-5 text-center text-light">
+          <Row className="justify-content-center my-5 text-center">
             <Col xs={12} md={6}>
-              <h2>Errore durante il caricamento delle notizie</h2>
-              <p>Ci dispiace, ma c'è stato un problema nel recupero dei dati.</p>
+              <h2 className="text-light">Errore durante il caricamento delle notizie</h2>
+              <p className="text-light">Ci dispiace, ma c'è stato un problema nel recupero dei dati.</p>
               <Button
             variant="info"
             onClick={() => {
