@@ -145,3 +145,8 @@ transform: translateY(-5px);
 .newsCard a{
   text-decoration: none;
 }
+.cards-image{
+  height: 150px;
+object-fit: cover;
+width: 100%;
+}

@@ -74,7 +74,7 @@ const News = () => {
     if(error){
       return (
         <Container>
-          <Row className="justify-content-center my-5 text-center">
+          <Row className="justify-content-center my-5 text-center text-light">
             <Col xs={12} md={6}>
               <h2>Errore durante il caricamento delle notizie</h2>
               <p>Ci dispiace, ma c'è stato un problema nel recupero dei dati.</p>

@@ -12,7 +12,7 @@ const WeatherSection = () => {
     "Roma,it", "Milano,it", "Napoli,it", "Torino,it", "Palermo,it", "Genova,it", "Bologna,it", "Firenze,it", "Bari,it", 
     "Catania,it", "Verona,it", "Venezia,it", "Messina,it", "Padova,it", "Trieste,it", "Taranto,it", "Brescia,it", 
     "Parma,it", "Modena,it", "Reggio Calabria,it", "Reggio Emilia,it", "Perugia,it", "Livorno,it", 
-    "Ravenna,it", "Cagliari,it", "Foggia,it", "Rimini,it", "Salerno,it", "Ferrara,it","Prato,it"
+    "Ravenna,it", "Cagliari,it", "Foggia,it", "Rimini,it", "Salerno,it", "Provincia di Ferrara,it","Prato,it"
   ];
 
   useEffect(() => {
