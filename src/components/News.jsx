@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card, Col, Container, Row, Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const News = () => {
   const [news, setNews] = useState([]);
@@ -7,10 +8,13 @@ const News = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerms, setSearchTerms] = useState(""); //testo digitato per la ricerca
   const [searchNews, setSearchNews] = useState(""); // filtro della ricerca
+  const [error, setError] = useState(false); //stato x errore con l'API
   const itemsPerPage = 8;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchNews = async () => {
+      try{
       const response = await fetch(
         `https://newsapi.org/v2/everything?q=weather&from=2025-01-01&sortBy=popularity&apiKey=a93973edbd784fbf8ed6d2e06a856d7c`
       );
@@ -24,6 +28,10 @@ const News = () => {
         )
         .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)); //ordino per data
       setNews(filterAndSortedArticles);
+      } catch (error) {
+        console.log(error);
+        setError(true);
+      }
     };
 
     fetchNews();
@@ -63,7 +71,27 @@ const News = () => {
       setCurrentPage(currentPage - 1);
     }
   };
-  return (
+    if(error){
+      return (
+        <Container>
+          <Row className="justify-content-center my-5 text-center">
+            <Col xs={12} md={6}>
+              <h2>Errore durante il caricamento delle notizie</h2>
+              <p>Ci dispiace, ma c'è stato un problema nel recupero dei dati.</p>
+              <Button
+            variant="info"
+            onClick={() => {
+              navigate("/"); //riporta a homepage
+            }}
+          >
+            TORNA IN HOMEPAGE
+          </Button>
+            </Col>
+          </Row>
+        </Container>
+      );
+    }
+    return(
     <Container>
       {/*bara di ricerca */}
       <Row className="justify-content-center my-3">
