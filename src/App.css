@@ -42,19 +42,18 @@
 body {
   background-image: url("../public/assets/nuvole.jpg");
   background-size: cover;
-background-repeat: repeat;
+  background-repeat: repeat;
 }
 
 #root {
   display: flex;
   flex-direction: column;
-  height: 100vh ;
- 
+  height: 100vh;
 }
 #root main {
   flex-grow: 1;
 }
-.myFooter{
+.myFooter {
   background-color: rgb(3, 3, 81);
 }
 .card-text-hidden {
@@ -70,9 +69,9 @@ background-repeat: repeat;
 .textCart {
   font-size: 14px;
 }
-.cityCard{
+.cityCard {
   cursor: pointer;
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
 }
 
 .cityCard:hover {
@@ -81,72 +80,87 @@ background-repeat: repeat;
 .carousel-opacity {
   opacity: 0.8;
 }
+.carousel-opacity img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
 
 /* Btn pages*/
-.pageButton{
-  background-color: rgb(3, 3, 81)!important;
+.pageButton {
+  background-color: rgb(3, 3, 81) !important;
   transition: transform 0.3s ease;
 }
-.pageButton:hover{
+.pageButton:hover {
   transform: scale(1.1);
-
+}
+.media-icon {
+  margin: 7px 0;
 }
 
+.footer_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+}
 @media (min-width: 480px) {
   .input-div {
     justify-content: center;
   }
- 
 }
-
 
 @media (max-width: 480px) {
   .input-div {
     justify-content: flex-start;
-
   }
- .submitButton{
-  padding: auto;
-  margin-right: 10px;
-  margin-left: 0px;
- }
+  .submitButton {
+    padding: auto;
+    margin-right: 10px;
+    margin-left: 0px;
+  }
+  .footer_row {
+    flex-direction: column;
+  }
+  .media-icon {
+    margin: 7px 0 0 0;
+  }
 }
-.newsCard{
+.newsCard {
   justify-content: space-between;
   box-shadow: 0 4px 8px rgbs(0, 0, 0, 0.1);
   overflow: hodden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.newsCard :hover{
-
-  box-shadow:0 8px 16px rgba(0, 0, 0, 0.2); ;
+.newsCard :hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.newsCard .card-body{
+.newsCard .card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 200px;
 }
-.newsImage{
-height: 250px;
-object-fit: cover;
-width: 100%;
+.newsImage {
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
 }
-.newsImage:hover{
-transform: translateY(-5px);
+.newsImage:hover {
+  transform: translateY(-5px);
 }
 
-.newsDescription{
+.newsDescription {
   overflow: hidden;
   text-overflow: ellipsis;
-
 }
-.newsCard a{
+.newsCard a {
   text-decoration: none;
 }
-.cards-image{
+.cards-image {
   height: 150px;
-object-fit: cover;
-width: 100%;
+  object-fit: cover;
+  width: 100%;
 }

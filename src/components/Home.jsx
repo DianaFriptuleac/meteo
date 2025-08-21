@@ -12,6 +12,7 @@ const Home = () => {
   const [cityWeather, setCityWeather] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [carouselImg, setCarouselImg] = useState([]);
 
   //useEffect - ogni volta che searchCity cambia
   useEffect(() => {
@@ -41,6 +42,14 @@ const Home = () => {
         });
     }
   }, [searchedCity]);
+
+  //Carousel Img
+  useEffect(() => {
+    fetch("/assets/file_json/home_img.json")
+      .then((resp) => resp.json())
+      .then((data) => setCarouselImg(data.home_images))
+      .catch((err) => console.log("Errore caricamento carousel img!", err));
+  }, []);
 
   //Aggiorno il searchQuery ogni volta che scrivo nel input
   const handleInputChange = (event) => {
@@ -119,44 +128,14 @@ const Home = () => {
       )}
 
       {/* Mostro il carosello solo se non c'e una citta cercata */}
-      {!cityWeather && (
+      {!cityWeather && carouselImg.length > 0 && (
         <Container>
           <Carousel data-bs-theme="dark" className="mb-3 carousel-opacity">
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://www.meteoweb.eu/wp-content/uploads/2017/09/mappa-sentinel-2.jpg"
-                alt="First slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://www.ideativi.it/public/Blog/google_maps_world_weather.png"
-                alt="Second slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://ilbolive.unipd.it/sites/default/files/2022-05/n_meteo.jpg"
-                alt="Third slide"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://cdn.studenti.stbm.it/images/2020/09/29/pianeta-terra-orig.jpeg"
-                alt="Pianeta"
-              />
-            </Carousel.Item>
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src="https://cartadellaterra.it/wp-content/uploads/2023/09/homepage1-1.jpg"
-                alt="Terra"
-              />
-            </Carousel.Item>
+            {carouselImg.map((src, i) => (
+              <Carousel.Item key={i}>
+                <img className="d-block w-100" src={src} alt={`carousel_img_${i+1}`}/>
+              </Carousel.Item>
+            ))}
           </Carousel>
         </Container>
       )}
