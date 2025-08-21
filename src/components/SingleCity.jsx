@@ -60,8 +60,8 @@ const SingleCity = ({ meteo }) => {
           className={isTextVisible ? "card-text-visible" : "card-text-hidden"}
         >
           <div className="d-flex justify-content-between">
-          <p><i class="bi bi-thermometer-snow"></i><strong>Min:</strong> {(meteo.main.temp_min - 273.15).toFixed(1)}°C</p>
-         <p><i class="bi bi-thermometer-sun"></i> <strong>Max:</strong> {(meteo.main.temp_max - 273.15).toFixed(1)}°C</p>
+          <span><i className="bi bi-thermometer-snow"></i><strong>Min:</strong> {(meteo.main.temp_min - 273.15).toFixed(1)}°C</span>
+         <span><i className="bi bi-thermometer-sun"></i> <strong>Max:</strong> {(meteo.main.temp_max - 273.15).toFixed(1)}°C</span>
           </div>
         </Card.Text>
       </Card.Body>
