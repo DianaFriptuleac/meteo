@@ -2,46 +2,26 @@ import React, { useState, useEffect } from "react";
 import SingleCity from "./SingleCity";
 import { Button, Form, InputGroup, Spinner } from "react-bootstrap";
 import { Row, Col, Container, Carousel } from "react-bootstrap";
-import "../CSS/Home.css"
+import "../CSS/Home.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectSingleCity,
+  selectSingleError,
+  selectSingleLoading,
+} from "../redux/weather/selectors";
+import { clearSingle } from "../redux/weather/reducer";
+import { fetchSingleCityWeather } from "../redux/weather/actions";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
   //il valore attuale del campo di input della ricerca
   const [searchQuery, setSearchQuery] = useState("");
-  //il nome della citta cercata
-  const [searchedCity, setSearchedCity] = useState("");
-  //i dati meteo restituiti dall'API per la citta cercata
-  const [cityWeather, setCityWeather] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
   const [carouselImg, setCarouselImg] = useState([]);
-   const API_KEY = process.env.REACT_APP_OPENWEATHER_KEY;
 
-  //useEffect - ogni volta che searchCity cambia
-  useEffect(() => {
-    if (searchedCity) {
-      setIsLoading(true);
-      setIsError(false);
-         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&appid=${API_KEY}`)
-        .then((response) => response.json())
-        .then((data) => {
-          //se la risposta e valida (cod.200) aggiorna cityWeather con i dati ottenuti dalle API,altrimenti null
-          if (data.cod === 200) {
-            setCityWeather({
-              name: data.name,
-              main: data.main,
-              weather: data.weather,
-            });
-          } else {
-            setCityWeather(null);
-          }
-          setIsLoading(false);
-        })
-        .catch(() => {
-          setIsLoading(false);
-          setIsError(true);
-        });
-    }
-  }, [searchedCity]);
+  const cityWeather = useSelector(selectSingleCity);
+  const isLoading = useSelector(selectSingleLoading);
+  const isError = useSelector(selectSingleError);
 
   //Carousel Img
   useEffect(() => {
@@ -53,21 +33,21 @@ const Home = () => {
 
   //Aggiorno il searchQuery ogni volta che scrivo nel input
   const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-  //Imposto searchedCity con il valore di searchQuery
-  // ed elimino eventuali spazi vuoti trim()
-  // resetto searchQuery a una stringa vuota
-  const handleSearch = () => {
-    setSearchedCity(searchQuery.trim());
-    setSearchQuery("");
+    const v = event.target.value;
+    setSearchQuery(v);
+    if (v.trim() === "") {
+      dispatch(clearSingle()); //quando si svuota l'input, nasconde la card
+    }
   };
 
   //prevengo il comportamento orenedinito del Form
   //chiamo handleSearch() per fare la ricerca
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSearch();
+    const q = searchQuery.trim();
+    if (!q) return;
+    dispatch(fetchSingleCityWeather(q));
+    setSearchQuery("");
   };
 
   return (
@@ -133,7 +113,11 @@ const Home = () => {
           <Carousel data-bs-theme="dark" className="mb-3 carousel-opacity">
             {carouselImg.map((src, i) => (
               <Carousel.Item key={i}>
-                <img className="d-block w-100" src={src} alt={`carousel_img_${i+1}`}/>
+                <img
+                  className="d-block w-100"
+                  src={src}
+                  alt={`carousel_img_${i + 1}`}
+                />
               </Carousel.Item>
             ))}
           </Carousel>

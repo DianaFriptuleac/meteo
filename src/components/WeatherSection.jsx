@@ -2,15 +2,20 @@ import React, { useState, useEffect, useMemo } from "react";
 import SingleCity from "./SingleCity";
 import { Row, Col, Container, Spinner, Pagination } from "react-bootstrap";
 import "../CSS/WeatherSection.css"
+import { useDispatch, useSelector } from "react-redux";
+import { selectWeatherList,selectWeatherListError,selectWeatherListLoading } from "../redux/weather/selectors";
+import { fetchCitiesWeather } from "../redux/weather/actions";
+import { usePagination } from "../hooks/usePagination";
 
 const WeatherSection = () => {
-  const [citiesWeather, setCitiesWeather] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const dispatch = useDispatch();
+  const citiesWeather = useSelector(selectWeatherList);
+  const isLoading = useSelector(selectWeatherListLoading)
+  const isError = useSelector(selectWeatherListError);
+
   const [expanded, setExpanded] = useState(null);
-  //Pagination
   const PAGE_NR = 12;
-  const [page, setPage] = useState(1);
+
 
   // Lista delle citta
   const mycities = [
@@ -51,62 +56,21 @@ const WeatherSection = () => {
     "Vicenza,it",
     "Trento,it",
   ];
-  const API_KEY = process.env.REACT_APP_OPENWEATHER_KEY;
+
 
   useEffect(() => {
-    fetchAllCities();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+   dispatch(fetchCitiesWeather(mycities))
+  }, [dispatch]);
 
   //Carica la prima pagina
   useEffect(() => {
     if (!isLoading && !isError) setPage(1);
   }, [isLoading, isError]);
 
-  const fetchAllCities = () => {
-    setIsLoading(true);
-    setIsError(false);
-
-    // Fetch dati meteo per tutte le citta
-    const fetchPromises = mycities.map(
-      (city) =>
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
-          .then((response) => response.json())
-          .then((data) => ({
-            name: data.name, //estrago il nome e i dati principali della citta
-            main: data.main,
-            weather: data.weather,
-          }))
-          .catch(() => null) //se c'e un errore, restituisci null
-    );
-
-    Promise.all(fetchPromises)
-      .then((results) => {
-        setCitiesWeather(results.filter((result) => result !== null)); //filtro i risultati per rimuovere i null
-        setIsLoading(false);
-      })
-      .catch(() => {
-        setIsLoading(false);
-        setIsError(true);
-      });
-  };
+ const { page, setPage, totalPages, pageData, goToPage } =
+  usePagination(citiesWeather, PAGE_NR, { resetOnItemsChange: true });
 
 
-  //Calcoli paginazione
-  const totalPages = Math.max(1, Math.ceil(citiesWeather.length / PAGE_NR));
-  /* Math.ceil = arrotonda per eccesso (se servono 2.3 pagine → 3)
-     Math.max(1, ...) = garantisce almeno 1 pagina anche quando l’array è vuoto
-     Ex: 35 città con PAGE_NR = 12 → 35/12 = 2.916… → ceil = 3 → totalPages = 3 */
-
-  const pageData = useMemo(() => {
-    const start = (page - 1) * PAGE_NR;
-    return citiesWeather.slice(start, start + PAGE_NR);
-  }, [citiesWeather, page]);
-  /*useMemo() → restituisce un valore memoizzato 
-   slice(start, start + PAGE_NR) prende al massimo PAGE_NR elementi a partire da start
-  */
-
-  const goToPage = (p) => setPage(p);
 
   return (
     <Container className="mt-3">
