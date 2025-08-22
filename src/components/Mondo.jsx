@@ -64,7 +64,7 @@ const Mondo = () => {
     "Jakarta",
     "San Francisco"
   ];
-
+  const API_KEY = process.env.REACT_APP_OPENWEATHER_KEY;
   useEffect(() => {
     fetchAllCities();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -81,9 +81,7 @@ const Mondo = () => {
 
     // Fetch dati meteo per tutte le città
     const fetchPromises = mycities.map((city) =>
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a0e171e2bcceba5ec1cddb1c98216ec8`
-      )
+     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
         .then((response) => response.json())
         .then((data) => ({
           name: data.name,

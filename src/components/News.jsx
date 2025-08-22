@@ -10,32 +10,32 @@ const News = () => {
   const [searchNews, setSearchNews] = useState(""); // filtro della ricerca
   const [error, setError] = useState(false); //stato x errore con l'API
   const itemsPerPage = 8;
+  const MAX_FETCH = 50;
+  const API_KEY = process.env.REACT_APP_GNEWS_API_KEY
   const navigate = useNavigate();
 
+  //fetch iniziale
   useEffect(() => {
-    const fetchNews = async () => {
-      try{
-      const response = await fetch(
-        `https://newsapi.org/v2/everything?q=weather&from=2025-01-01&sortBy=popularity&apiKey=a93973edbd784fbf8ed6d2e06a856d7c`
-      );
-      const data = await response.json();
-      const filterAndSortedArticles = data.articles
-        .filter(
-          (article) =>
-            article.source.name !== "[Removed]" &&
-            article.title !== "[Removed]" &&
-            article.description !== "[Removed]"
-        )
+    fetchNews("Google");
+  },[]);
+
+    const fetchNews = async (query) => {
+      try{ 
+  const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=${MAX_FETCH}&apikey=${API_KEY}`;
+      const response = await fetch(url);
+      if(!response.ok) throw new Error("HTTP " + response.status);
+         const data = await response.json();
+      const filterAndSortedArticles = (data.articles || [])
+        .filter(a => a.title && a.description && a.url)
         .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)); //ordino per data
       setNews(filterAndSortedArticles);
+      setCurrentPage(1);
       } catch (error) {
         console.log(error);
         setError(true);
       }
     };
 
-    fetchNews();
-  }, []);
 
   const toggleExpand = (index) => {
     setExpandedArticle(index === expandedArticle ? null : index);
@@ -105,6 +105,7 @@ const News = () => {
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 e.preventDefault();
+                fetchNews(searchTerms || "Google");
                 setSearchNews(searchTerms);
                 setSearchTerms(""); //svuoto il campo
                 setCurrentPage(1); //resetto la prima pagina
@@ -114,6 +115,7 @@ const News = () => {
           <Button
             className="ms-2 d-inline-flex align-items-center"
             onClick={() => {
+              fetchNews(searchTerms || "Google");
               setSearchNews(searchTerms);
               setSearchTerms(""); //svuoto il campo
               setCurrentPage(1); //resetto la prima pagina
@@ -130,7 +132,7 @@ const News = () => {
               <Card.Img
                 className="newsImage"
                 variant="top"
-                src={article.urlToImage || "https://via.placeholder.com/150"}
+                src={article.image || "https://via.placeholder.com/150"}
               />
               <Card.Body>
                 <Card.Title

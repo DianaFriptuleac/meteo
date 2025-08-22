@@ -51,6 +51,7 @@ const WeatherSection = () => {
     "Vicenza,it",
     "Trento,it",
   ];
+  const API_KEY = process.env.REACT_APP_OPENWEATHER_KEY;
 
   useEffect(() => {
     fetchAllCities();
@@ -69,9 +70,7 @@ const WeatherSection = () => {
     // Fetch dati meteo per tutte le citta
     const fetchPromises = mycities.map(
       (city) =>
-        fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a0e171e2bcceba5ec1cddb1c98216ec8`
-        )
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
           .then((response) => response.json())
           .then((data) => ({
             name: data.name, //estrago il nome e i dati principali della citta

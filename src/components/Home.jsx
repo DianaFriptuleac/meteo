@@ -14,15 +14,14 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [carouselImg, setCarouselImg] = useState([]);
+   const API_KEY = process.env.REACT_APP_OPENWEATHER_KEY;
 
   //useEffect - ogni volta che searchCity cambia
   useEffect(() => {
     if (searchedCity) {
       setIsLoading(true);
       setIsError(false);
-      fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&appid=a0e171e2bcceba5ec1cddb1c98216ec8`
-      )
+         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchedCity}&appid=${API_KEY}`)
         .then((response) => response.json())
         .then((data) => {
           //se la risposta e valida (cod.200) aggiorna cityWeather con i dati ottenuti dalle API,altrimenti null
