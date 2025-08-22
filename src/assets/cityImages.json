@@ -61,7 +61,7 @@
   "New York": "https://images.musement.com/cover/0002/42/view-on-manhattan-at-night-new-york-city_header-141511.jpeg",
   "Seattle": "https://res.cloudinary.com/hello-tickets/image/upload/c_limit,f_auto,q_auto,w_1300/v1664851321/ko0cnw1btgnekw43zwbf.jpg",
   "Los Angeles": "https://images.placesonline.com/photos/424010505221224_Hollywood-venti-views-GGwBS_kuKB0-unsplash.jpg",
-  "Nairobi": "https://www.blackpast.org/wp-content/uploads/prodimages/files/Nairobi_city_center_May_2_2015_Photo_by_Ninara_CC_BY_2.0.jpg",
+  "Nairobi": "https://a.travel-assets.com/findyours-php/viewfinder/images/res70/38000/38950-Nairobi.jpg",
   "Manila": "https://www.resafilippinerna.se/wp-content/uploads/2018/10/Manila-Filippinerna-1200x628px.jpg",
   "Chișinău": "https://siviaggia.it/wp-content/uploads/sites/2/2024/07/chisinau-panorama.jpg",
   "Oslo": "https://res.cloudinary.com/simpleview/image/upload/v1634555140/clients/norway/Oslo_operahus_2_447c01a6-7d1c-4cd6-a87a-0c38e552a893.jpg",
@@ -76,5 +76,11 @@
   "Copenhagen": "https://images.lonelyplanetitalia.it/uploads/il-variopinto-nyhavn-di-sera.jpg?q=80&p=slider&s=edeca3b4fb762de69af5f862a943b7d6",
   "Vienna": "https://www.caldana.it/files/blog/image/vienna_e_dintorni_viaggi.jpg",
   "Brussels": "https://boscolo-viaggi-res.cloudinary.com/images/w_2560,h_1707/f_auto,q_auto/v1675970493/Destinazioni/Belgio/SS_Bruxelles_1255335097_itsafg/SS_Bruxelles_1255335097_itsafg.jpg?_i=AA",
-  "Varsavia": "https://www.iterarte.it/wp-content/uploads/2019/04/VARSAVIA-678x381.jpg"
+  "Warsaw": "https://www.iterarte.it/wp-content/uploads/2019/04/VARSAVIA-678x381.jpg",
+  "Sydney": "https://sfycdn.speedsize.com/5a520e7d-65b5-430f-bbbe-539adfe7537a/https://anatomie.com/cdn/shop/articles/Sydney_img_3733.jpg?v=1593546026&width=1100",
+  "Hong Kong": "https://www.discoverhongkong.com/content/dam/dhk/intl/explore/attractions/the-charm-of-the-bright-city/the-charm-of-the-bright-city-1920x1080.jpg",
+  "Toronto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlFddBURsc2dgc3SFiUUtmrpDLNo2qAxnwuA&s",
+  "Dubai": "https://www.agoda.com/wp-content/uploads/2024/07/dubai-uae-featured.jpg",
+  "Jakarta": "https://img.static-kl.com/images/media/B6441E54-1D2C-416B-A9060E669E194710",
+  "San Francisco": "https://www.visittheusa.com/sites/default/files/styles/hero_l/public/images/hero_media_image/2016-10/Getty_591648687_Brand_City_SanFrancisco_Hero_FinalCrop.jpg?h=dd3c63f2&itok=iAr8BYrW"
 }

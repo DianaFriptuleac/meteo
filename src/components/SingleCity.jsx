@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, Alert } from "react-bootstrap";
 import cityImages from "../assets/cityImages.json"; // Importa il JSON con le immagini delle città
+import "../CSS/SingleCity.css"
 
 const SingleCity = ({ meteo, onOpen, onClose, expanded = false }) => {
   // visibilita testo x expanded
@@ -40,7 +41,6 @@ const SingleCity = ({ meteo, onOpen, onClose, expanded = false }) => {
     <Card
       className={`h-100 cityCard ${expanded ? "cityCard-expanded" : ""}`}
       onClick={handleCardClick}
-      style={{ cursor: "pointer" }}
     >
       <Card.Img
         className="cards-image"
@@ -48,7 +48,7 @@ const SingleCity = ({ meteo, onOpen, onClose, expanded = false }) => {
         src={cityImage}
         alt={cityName}
       />
-      <Card.Body>
+      <Card.Body className={`singleCity_card_body ${expanded ? "singleCity_card_body--expanded" : ""}`}>
         <Card.Title className="titleCard">{cityName}</Card.Title>
         <Card.Text className="textCart">
           {/*Converto la temperatura da Kelvin a Celsius (0 Kelvin = -273.15°C) */}

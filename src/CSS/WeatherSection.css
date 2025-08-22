@@ -1,0 +1,65 @@
+/* Gestione expanded card*/
+/*griglia quando l’overlay è aperto*/
+.grid-dim {
+  filter: blur(2px); /*sfocatura agli elementi dientro l’overlay */
+  opacity: 0.4; /*spegne sfondo*/
+  pointer-events: none; /* disabilita i click sulla griglia mentre l’overlay è attivo */
+  transition: filter 180ms ease, opacity 180ms ease; /*transazionne opacità*/
+}
+
+/* Overlay fullscreen */
+.card-overlay {
+  position: fixed; /*non scorre con la pagina*/
+  inset: 0; /* shorthand per top/right/bottom/left: 0 → copre tutta la viewport */
+  background: rgba(80, 79, 79, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1060; /* sopra i componenti bootstrap normali */
+  animation: overlayFade 180ms ease; /* fade-in veloce dell’overlay quando appare */
+}
+
+@keyframes overlayFade {
+  from {
+    opacity: 0;
+  } /*inizia invisibile*/
+  to {
+    opacity: 1;
+  } /*visibile*/
+}
+
+/* Contenitore della card espansa */
+.card-overlay-inner {
+  width: min(
+    92vw,
+    720px
+  ); /* larghezza responsiva: max 720px, altrimenti 92% della viewport */
+  max-height: 92vh;
+}
+/* Pagination Btn */
+.pagination_btn .page-link {
+  background-color: transparent;
+  color: rgb(3, 3, 81);
+  border: 1px solid rgb(3, 3, 81);
+}
+
+/* hover*/
+.pagination_btn .page-link:hover {
+  background-color: rgba(3, 3, 81, 0.1); /* blu trasparente */
+  color: rgb(3, 3, 81);
+  border-color: rgb(3, 3, 81);
+}
+
+/* active */
+.pagination_btn .page-item.active .page-link {
+  background-color: rgb(3, 3, 81); /* blu pieno */
+  border-color: rgb(3, 3, 81);
+  color: #aaa;
+}
+
+/* disabled */
+.pagination_btn .page-item.disabled .page-link {
+  background-color: transparent;
+  color: #aaa;
+  border-color: #ddd;
+}

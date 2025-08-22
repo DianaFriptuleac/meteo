@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import SingleCity from "./SingleCity";
 import { Row, Col, Container, Spinner, Pagination } from "react-bootstrap";
+import "../CSS/WeatherSection.css"
 
 const WeatherSection = () => {
   const [citiesWeather, setCitiesWeather] = useState([]);
@@ -154,7 +155,7 @@ const WeatherSection = () => {
         </Row>
         {citiesWeather.length > PAGE_NR && (
           <div className="d-flex justify-content-center mt-3">
-            <Pagination>
+            <Pagination className="pagination_btn">
               <Pagination.Prev
                 onClick={() => goToPage(page - 1)}
                 disabled={page === 1}

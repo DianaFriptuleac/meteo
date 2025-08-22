@@ -1,0 +1,22 @@
+
+.myFooter {
+  background-color: rgb(3, 3, 81);
+}
+.footer_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 0;
+}
+.media-icon {
+  margin: 7px 0;
+}
+@media (max-width: 480px) {
+    .footer_row {
+    flex-direction: column;
+  }
+  .media-icon {
+    margin: 7px 0 0 0;
+  }
+}

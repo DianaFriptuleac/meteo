@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SingleCity from "./SingleCity";
 import { Button, Form, InputGroup, Spinner } from "react-bootstrap";
 import { Row, Col, Container, Carousel } from "react-bootstrap";
+import "../CSS/Home.css"
 
 const Home = () => {
   //il valore attuale del campo di input della ricerca
