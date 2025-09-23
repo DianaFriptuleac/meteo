@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import weatherReducer from "./weather/reducer";
+import mapReducer from "./maps/reducer";
 
 const rootReducer = combineReducers({
   weather: weatherReducer,
+  maps: mapReducer
 });
 
 export const store = configureStore({

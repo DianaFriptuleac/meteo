@@ -52,3 +52,21 @@ export const fetchSingleCityWeather = createAsyncThunk(
     }
   }
 );
+
+export const fetchForecastByCoord = createAsyncThunk(
+  "weather/fetchForecastByCoord",
+  async ({ lat, lon }, { rejectWithValue }) => {
+    const API_KEY = process.env.REACT_APP_OPENWEATHER_KEY;
+    if (!API_KEY) return rejectWithValue("Missing OPENWEATHER API key");
+    try {
+      const res = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+      );
+      const data = await res.json();
+      if (!data?.list) return rejectWithValue("No forecast data");
+      return data.list; 
+    } catch {
+      return rejectWithValue("Network error");
+    }
+  }
+);

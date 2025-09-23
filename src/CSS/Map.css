@@ -1,0 +1,32 @@
+/* Tabella meteo con trasparenza */
+.weather-table-card {
+  background-color: rgba(255, 255, 255, 0.85); /* bianco trasparente */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Testo dentro la tabella */
+.weather-table-card table {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+/* Header tabella*/
+.weather-table-card thead th {
+  background-color: rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+}
+
+/* Search bar fissa con larghezza minima */
+.search-bar{
+  width: 25%;          /* compatibile con Bootstrap w-25 */
+  min-width: 220px;    /* non si rimpicciolisce troppo */
+}
+
+.search-bar input {
+  border-radius: 20px 0 0 20px;
+}
+
+.search-bar button {
+  border-radius: 0 20px 20px 0;
+}

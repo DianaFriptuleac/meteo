@@ -35,7 +35,7 @@ const CustomNavbar = function () {
             </Link>
           </Nav>
           <Nav className="ms-auto">
-            <Link to="/daaggiornare" className={addActiveOrNot('settings')}><i className="bi bi-bell-fill"></i></Link>
+            <Link to="/maps" className={addActiveOrNot('maps')}><i className="bi bi-geo-alt"></i></Link>
             <Link to="/daaggiornare" className={addActiveOrNot('profile')}><i className="bi bi-person-circle icons"></i></Link>
           </Nav>
         </Navbar.Collapse>

@@ -11,6 +11,9 @@ import Notizie from "./components/Notizie.jsx";
 import DaAggiornare from "./components/DaAggirnare.jsx";
 import Mondo from "./components/Mondo.jsx";
 import News from "./components/News.jsx";
+import Map from "./components/Map.jsx";
+import 'leaflet/dist/leaflet.css';
+
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +28,7 @@ function App() {
           <Route path="/daaggiornare" element={<DaAggiornare />} />
           <Route path="/mondo" element={<Mondo />} />
           <Route path="*" element={<NotFound />} />
+           <Route path="/maps" element={<Map/>} />
         </Routes>
       </main>
       <MyFooter />
