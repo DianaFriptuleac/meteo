@@ -21,7 +21,10 @@ const News = () => {
 
     const fetchNews = async (query) => {
       try{ 
+  //url vecchio (senza il file vercel.json (Non funziona per il deploy))
  // const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=${MAX_FETCH}&apikey=${API_KEY}`;
+
+ //url nuoveo (con vercel.json - funziona con il deploy)
  const url = `/api/gnews/search?q=${encodeURIComponent(query)}&lang=en&max=${MAX_FETCH}&apikey=${API_KEY}`;
 
       const response = await fetch(url);
