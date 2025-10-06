@@ -21,7 +21,9 @@ const News = () => {
 
     const fetchNews = async (query) => {
       try{ 
-  const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=${MAX_FETCH}&apikey=${API_KEY}`;
+ // const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&max=${MAX_FETCH}&apikey=${API_KEY}`;
+ const url = `/api/gnews/search?q=${encodeURIComponent(query)}&lang=en&max=${MAX_FETCH}&apikey=${API_KEY}`;
+
       const response = await fetch(url);
       if(!response.ok) throw new Error("HTTP " + response.status);
          const data = await response.json();

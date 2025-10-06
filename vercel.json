@@ -1,0 +1,18 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/gnews/(.*)",
+      "destination": "https://gnews.io/api/v4/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/gnews/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "*" }
+      ]
+    }
+  ]
+}
